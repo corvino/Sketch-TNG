@@ -672,7 +672,7 @@
                         <splitViewItem id="89L-7S-6yQ"/>
                         <splitViewItem id="RZs-IR-NLB"/>
                     </splitViewItems>
-                    <splitView key="splitView" dividerStyle="thin" vertical="YES" id="gtD-Sf-wlw">
+                    <splitView key="splitView" wantsLayer="YES" dividerStyle="thin" vertical="YES" id="gtD-Sf-wlw">
                         <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </splitView>
@@ -873,16 +873,28 @@
             </objects>
             <point key="canvasLocation" x="448" y="1154"/>
         </scene>
-        <!--View Controller-->
+        <!--Canvas View Controller-->
         <scene sceneID="YYg-DD-RcI">
             <objects>
-                <viewController id="LyJ-wr-Dv2" sceneMemberID="viewController">
+                <viewController id="LyJ-wr-Dv2" customClass="CanvasViewController" sceneMemberID="viewController">
                     <view key="view" id="bvY-b5-ngQ">
                         <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
-                            <customView translatesAutoresizingMaskIntoConstraints="NO" id="ybd-6c-zYG">
+                            <customView translatesAutoresizingMaskIntoConstraints="NO" id="ybd-6c-zYG" userLabel="Canvas View">
                                 <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
+                                <gestureRecognizers>
+                                    <panGestureRecognizer delaysPrimaryMouseButtonEvents="YES" id="JfG-hi-Goq">
+                                        <connections>
+                                            <action selector="dragWithGestureRecognizer:" target="LyJ-wr-Dv2" id="fAU-61-7po"/>
+                                        </connections>
+                                    </panGestureRecognizer>
+                                    <magnificationGestureRecognizer delaysMagnificationEvents="YES" magnification="0.0" id="7uS-Xf-00N">
+                                        <connections>
+                                            <action selector="magnifyWithGestureRecognizer:" target="LyJ-wr-Dv2" id="Tso-F4-efl"/>
+                                        </connections>
+                                    </magnificationGestureRecognizer>
+                                </gestureRecognizers>
                             </customView>
                             <button translatesAutoresizingMaskIntoConstraints="NO" id="XwP-1R-leY">
                                 <rect key="frame" x="3" y="262" width="34" height="35"/>
@@ -894,6 +906,9 @@
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system" size="18"/>
                                 </buttonCell>
+                                <connections>
+                                    <action selector="addShape:" target="LyJ-wr-Dv2" id="tnh-l4-Yy4"/>
+                                </connections>
                             </button>
                         </subviews>
                         <constraints>
@@ -905,6 +920,9 @@
                             <constraint firstItem="ybd-6c-zYG" firstAttribute="top" secondItem="bvY-b5-ngQ" secondAttribute="top" id="vai-Ae-5gz"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="canvasView" destination="ybd-6c-zYG" id="jgL-sI-f9U"/>
+                    </connections>
                 </viewController>
                 <customObject id="yhn-aQ-4c7" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>

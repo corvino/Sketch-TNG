@@ -14,6 +14,8 @@
 		277CF7981AA4CF7C00A6EA7E /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 277CF7971AA4CF7C00A6EA7E /* Images.xcassets */; };
 		277CF79B1AA4CF7C00A6EA7E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 277CF7991AA4CF7C00A6EA7E /* Main.storyboard */; };
 		277CF7A71AA4CF7C00A6EA7E /* Sketch_TNGTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 277CF7A61AA4CF7C00A6EA7E /* Sketch_TNGTests.m */; };
+		277CF7B41AA4E8C400A6EA7E /* CanvasViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 277CF7B31AA4E8C400A6EA7E /* CanvasViewController.m */; };
+		277CF7BB1AA4F00600A6EA7E /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 277CF7BA1AA4F00600A6EA7E /* QuartzCore.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -41,6 +43,9 @@
 		277CF7A01AA4CF7C00A6EA7E /* Sketch TNGTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Sketch TNGTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		277CF7A51AA4CF7C00A6EA7E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		277CF7A61AA4CF7C00A6EA7E /* Sketch_TNGTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Sketch_TNGTests.m; sourceTree = "<group>"; };
+		277CF7B21AA4E8C400A6EA7E /* CanvasViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CanvasViewController.h; sourceTree = "<group>"; };
+		277CF7B31AA4E8C400A6EA7E /* CanvasViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CanvasViewController.m; sourceTree = "<group>"; };
+		277CF7BA1AA4F00600A6EA7E /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -48,6 +53,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				277CF7BB1AA4F00600A6EA7E /* QuartzCore.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -66,6 +72,7 @@
 			children = (
 				277CF7891AA4CF7C00A6EA7E /* Sketch TNG */,
 				277CF7A31AA4CF7C00A6EA7E /* Sketch TNGTests */,
+				277CF7BC1AA4FC1600A6EA7E /* ExternalFrameworks */,
 				277CF7881AA4CF7C00A6EA7E /* Products */,
 			);
 			sourceTree = "<group>";
@@ -90,6 +97,7 @@
 				277CF7951AA4CF7C00A6EA7E /* Document.m */,
 				277CF7971AA4CF7C00A6EA7E /* Images.xcassets */,
 				277CF7991AA4CF7C00A6EA7E /* Main.storyboard */,
+				277CF7B11AA4E89600A6EA7E /* Canvas */,
 				277CF78A1AA4CF7C00A6EA7E /* Supporting Files */,
 			);
 			path = "Sketch TNG";
@@ -119,6 +127,23 @@
 				277CF7A51AA4CF7C00A6EA7E /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		277CF7B11AA4E89600A6EA7E /* Canvas */ = {
+			isa = PBXGroup;
+			children = (
+				277CF7B21AA4E8C400A6EA7E /* CanvasViewController.h */,
+				277CF7B31AA4E8C400A6EA7E /* CanvasViewController.m */,
+			);
+			name = Canvas;
+			sourceTree = "<group>";
+		};
+		277CF7BC1AA4FC1600A6EA7E /* ExternalFrameworks */ = {
+			isa = PBXGroup;
+			children = (
+				277CF7BA1AA4F00600A6EA7E /* QuartzCore.framework */,
+			);
+			name = ExternalFrameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -222,6 +247,7 @@
 			files = (
 				277CF7961AA4CF7C00A6EA7E /* Document.m in Sources */,
 				277CF7931AA4CF7C00A6EA7E /* ViewController.m in Sources */,
+				277CF7B41AA4E8C400A6EA7E /* CanvasViewController.m in Sources */,
 				277CF7901AA4CF7C00A6EA7E /* main.m in Sources */,
 				277CF78E1AA4CF7C00A6EA7E /* AppDelegate.m in Sources */,
 			);
@@ -413,6 +439,7 @@
 				277CF7AC1AA4CF7C00A6EA7E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		277CF7AD1AA4CF7C00A6EA7E /* Build configuration list for PBXNativeTarget "Sketch TNGTests" */ = {
 			isa = XCConfigurationList;
@@ -421,6 +448,7 @@
 				277CF7AF1AA4CF7C00A6EA7E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
