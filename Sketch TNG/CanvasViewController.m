@@ -53,6 +53,7 @@
     if (panner.state == NSGestureRecognizerStateBegan) {
         selectedShape = [self selectShapeAtLocation:[panner locationInView:self.canvasView]];
         if (selectedShape) {
+            [[NSNotificationCenter defaultCenter] postNotificationName:SHAPE_BECAME_SELECTED object:nil userInfo:@{ SELECTED_SHAPE : selectedShape }];
             [panner setTranslation:selectedShape.frame.origin inView:self.canvasView];
         }
     } else if (selectedShape) {
@@ -64,6 +65,7 @@
                 [CATransaction setDisableActions:YES];
                 selectedShape.frame = frame;
                 [CATransaction commit];
+                [[NSNotificationCenter defaultCenter] postNotificationName:SHAPE_ATTRIBUTES_CHANGED object:nil];
                 break;
             }
 
@@ -78,6 +80,9 @@
     if (magnifier.state == NSGestureRecognizerStateBegan) {
         selectedShape = [self selectShapeAtLocation:[magnifier locationInView:self.canvasView]];
         originalSize = selectedShape.frame.size;
+        if (selectedShape) {
+            [[NSNotificationCenter defaultCenter] postNotificationName:SHAPE_BECAME_SELECTED object:nil userInfo:@{ SELECTED_SHAPE : selectedShape }];
+        }
     } else if (selectedShape) {
         switch (magnifier.state) {
             case NSGestureRecognizerStateChanged: {
@@ -91,6 +96,7 @@
                 selectedShape.path = CGPathCreateWithEllipseInRect(CGRectMake(0., 0., frame.size.width, frame.size.height), &CGAffineTransformIdentity);
                 selectedShape.frame = frame;
                 [CATransaction commit];
+                [[NSNotificationCenter defaultCenter] postNotificationName:SHAPE_ATTRIBUTES_CHANGED object:nil];
             }
 
             default:

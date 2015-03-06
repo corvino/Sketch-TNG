@@ -8,6 +8,11 @@
 
 #import <Cocoa/Cocoa.h>
 
+#define SHAPE_BECAME_SELECTED @"SHAPE_BECAME_SELECTED"
+#define SHAPE_ATTRIBUTES_CHANGED @"SHAPE_ATTRIBUTES_CHANGED"
+
+#define SELECTED_SHAPE @"SELECTED_SHAPE"
+
 @interface CanvasViewController : NSViewController
 
 @property (weak) IBOutlet NSView *canvasView;

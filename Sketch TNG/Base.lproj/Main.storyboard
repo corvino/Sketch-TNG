@@ -688,7 +688,7 @@
         <!--Canvas Inspector-->
         <scene sceneID="Vlk-4B-SYu">
             <objects>
-                <viewController title="Canvas Inspector" id="lyl-dR-n2g" sceneMemberID="viewController">
+                <viewController title="Canvas Inspector" id="lyl-dR-n2g" customClass="CanvasInspectorViewController" sceneMemberID="viewController">
                     <view key="view" id="43T-2J-tOb">
                         <rect key="frame" x="0.0" y="0.0" width="206" height="336"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -710,6 +710,9 @@
                             <colorWell translatesAutoresizingMaskIntoConstraints="NO" id="vFH-X9-cqs">
                                 <rect key="frame" x="121" y="236" width="44" height="23"/>
                                 <color key="color" red="0.05813049898" green="0.055541899059999997" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <connections>
+                                    <action selector="strokeColorChanged:" target="lyl-dR-n2g" id="vcg-uN-iJe"/>
+                                </connections>
                             </colorWell>
                             <stepper horizontalHuggingPriority="750" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="iV7-Nm-mdo">
                                 <rect key="frame" x="170" y="203" width="19" height="27"/>
@@ -722,18 +725,28 @@
                                     <constraint firstAttribute="width" constant="44" id="sQn-dI-neh"/>
                                 </constraints>
                                 <color key="color" red="0.05813049898" green="0.055541899059999997" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <connections>
+                                    <action selector="fillColorChanged:" target="lyl-dR-n2g" id="bIX-jG-JR3"/>
+                                </connections>
                             </colorWell>
                             <slider verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="mGI-KA-Uqf">
                                 <rect key="frame" x="18" y="173" width="149" height="27"/>
                                 <sliderCell key="cell" state="on" alignment="left" maxValue="100" doubleValue="50" tickMarkPosition="below" numberOfTickMarks="10" sliderType="linear" id="lYN-Xz-mc1"/>
+                                <connections>
+                                    <action selector="lineWidthSliderChanged:" target="lyl-dR-n2g" id="YR3-IA-eFZ"/>
+                                </connections>
                             </slider>
                             <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="E94-IS-5hW">
                                 <rect key="frame" x="121" y="206" width="44" height="22"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="orn-BA-dPi">
+                                    <numberFormatter key="formatter" formatterBehavior="default10_4" usesGroupingSeparator="NO" minimumIntegerDigits="0" maximumIntegerDigits="42" id="Say-0a-y5N" customClass="NumericOnlyFormatter"/>
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
+                                <connections>
+                                    <action selector="lineWidthTextReceived:" target="lyl-dR-n2g" id="9aP-Z5-01W"/>
+                                </connections>
                             </textField>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="pyc-2i-19x">
                                 <rect key="frame" x="32" y="119" width="13" height="17"/>
@@ -746,34 +759,51 @@
                             <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="fnM-kt-9J9">
                                 <rect key="frame" x="121" y="116" width="44" height="22"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="cuM-wZ-PTj">
+                                    <numberFormatter key="formatter" formatterBehavior="default10_4" usesGroupingSeparator="NO" minimumIntegerDigits="0" maximumIntegerDigits="42" id="ewT-ol-kFw" customClass="NumericOnlyFormatter"/>
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
+                                <connections>
+                                    <action selector="textInputReceived:" target="lyl-dR-n2g" id="rbO-ad-hKd"/>
+                                    <outlet property="delegate" destination="lyl-dR-n2g" id="izZ-lY-WI5"/>
+                                </connections>
                             </textField>
                             <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="a2P-iN-znG">
                                 <rect key="frame" x="121" y="84" width="44" height="22"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="tUU-yM-FDg">
+                                    <numberFormatter key="formatter" formatterBehavior="default10_4" usesGroupingSeparator="NO" minimumIntegerDigits="0" maximumIntegerDigits="42" id="HfN-gS-t2e" customClass="NumericOnlyFormatter"/>
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
+                                <connections>
+                                    <action selector="textInputReceived:" target="lyl-dR-n2g" id="vVu-BS-KT0"/>
+                                </connections>
                             </textField>
                             <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="JmI-ww-CNI">
                                 <rect key="frame" x="121" y="52" width="44" height="22"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="5YQ-sR-lAP">
+                                    <numberFormatter key="formatter" formatterBehavior="default10_4" usesGroupingSeparator="NO" minimumIntegerDigits="0" maximumIntegerDigits="42" id="KDw-J7-RVv" customClass="NumericOnlyFormatter"/>
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
+                                <connections>
+                                    <action selector="textInputReceived:" target="lyl-dR-n2g" id="0za-ug-zwO"/>
+                                </connections>
                             </textField>
                             <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="awj-HH-gFY">
                                 <rect key="frame" x="121" y="20" width="44" height="22"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="LAU-uy-ZeQ">
+                                    <numberFormatter key="formatter" formatterBehavior="default10_4" usesGroupingSeparator="NO" minimumIntegerDigits="0" maximumIntegerDigits="42" id="T0c-EE-ASC" customClass="NumericOnlyFormatter"/>
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
+                                <connections>
+                                    <action selector="textInputReceived:" target="lyl-dR-n2g" id="3hw-Wk-UiU"/>
+                                </connections>
                             </textField>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Mjm-0F-1pU">
                                 <rect key="frame" x="32" y="87" width="13" height="17"/>
@@ -868,6 +898,16 @@
                             <constraint firstItem="hhA-yQ-fin" firstAttribute="centerY" secondItem="vFH-X9-cqs" secondAttribute="centerY" id="zyI-3P-XkH"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="fillColorWell" destination="0PE-rK-zVn" id="LfW-n7-2IB"/>
+                        <outlet property="heightTextField" destination="awj-HH-gFY" id="RCG-JN-Vfa"/>
+                        <outlet property="lineWidthSlider" destination="mGI-KA-Uqf" id="HxM-6L-DbM"/>
+                        <outlet property="lineWidthTextField" destination="E94-IS-5hW" id="S99-vC-KIP"/>
+                        <outlet property="strokeColorWell" destination="vFH-X9-cqs" id="Ino-Te-AlC"/>
+                        <outlet property="widthTextField" destination="JmI-ww-CNI" id="7RO-zZ-IGd"/>
+                        <outlet property="xTextField" destination="fnM-kt-9J9" id="UOW-bq-0Ew"/>
+                        <outlet property="yTextField" destination="a2P-iN-znG" id="1Na-pv-H90"/>
+                    </connections>
                 </viewController>
                 <customObject id="tXb-bS-MSF" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -878,11 +918,15 @@
             <objects>
                 <viewController id="LyJ-wr-Dv2" customClass="CanvasViewController" sceneMemberID="viewController">
                     <view key="view" id="bvY-b5-ngQ">
-                        <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
+                        <rect key="frame" x="0.0" y="0.0" width="350" height="350"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <customView translatesAutoresizingMaskIntoConstraints="NO" id="ybd-6c-zYG" userLabel="Canvas View">
-                                <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
+                                <rect key="frame" x="0.0" y="0.0" width="350" height="350"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="325" id="6HV-Be-IcX"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="325" id="wXh-Qj-3o6"/>
+                                </constraints>
                                 <gestureRecognizers>
                                     <panGestureRecognizer delaysPrimaryMouseButtonEvents="YES" id="JfG-hi-Goq">
                                         <connections>
@@ -897,7 +941,7 @@
                                 </gestureRecognizers>
                             </customView>
                             <button translatesAutoresizingMaskIntoConstraints="NO" id="XwP-1R-leY">
-                                <rect key="frame" x="3" y="262" width="34" height="35"/>
+                                <rect key="frame" x="3" y="312" width="34" height="35"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="0Kk-rV-z5U"/>
                                     <constraint firstAttribute="width" constant="30" id="UII-Wx-kgn"/>
