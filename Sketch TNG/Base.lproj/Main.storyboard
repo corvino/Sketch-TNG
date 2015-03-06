@@ -918,7 +918,70 @@
                 </viewController>
                 <customObject id="tXb-bS-MSF" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="448" y="1154"/>
+            <point key="canvasLocation" x="446" y="1138"/>
+        </scene>
+        <!--Shape Picker Controller-->
+        <scene sceneID="yqR-jx-6Es">
+            <objects>
+                <viewController id="vpT-uY-fsB" customClass="ShapePickerController" sceneMemberID="viewController">
+                    <view key="view" id="NoZ-gz-vFQ">
+                        <rect key="frame" x="0.0" y="0.0" width="112" height="273"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <button translatesAutoresizingMaskIntoConstraints="NO" id="VG6-kZ-M1X">
+                                <rect key="frame" x="20" y="181" width="72" height="72"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="72" id="RqU-pg-7ZR"/>
+                                    <constraint firstAttribute="height" constant="72" id="Tdr-KD-dfg"/>
+                                </constraints>
+                                <buttonCell key="cell" type="square" title="Rectangle" bezelStyle="shadowlessSquare" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="vDg-Zk-U4I">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="rectangleSelected:" target="vpT-uY-fsB" id="DxH-Aa-KiX"/>
+                                </connections>
+                            </button>
+                            <button translatesAutoresizingMaskIntoConstraints="NO" id="I71-75-6X6">
+                                <rect key="frame" x="20" y="101" width="72" height="72"/>
+                                <buttonCell key="cell" type="square" title="Ellipse" bezelStyle="shadowlessSquare" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="YVg-ix-J6w">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                    <connections>
+                                        <action selector="ellipseSelected:" target="vpT-uY-fsB" id="HsI-Kh-yWn"/>
+                                    </connections>
+                                </buttonCell>
+                            </button>
+                            <button translatesAutoresizingMaskIntoConstraints="NO" id="c0w-0c-zrY">
+                                <rect key="frame" x="20" y="20" width="72" height="72"/>
+                                <buttonCell key="cell" type="square" title="Triangle" bezelStyle="shadowlessSquare" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="8AP-Om-FA9">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="triangleSelected:" target="vpT-uY-fsB" id="RiZ-Hr-yTZ"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="VG6-kZ-M1X" firstAttribute="leading" secondItem="NoZ-gz-vFQ" secondAttribute="leading" constant="20" id="11J-gd-EsO"/>
+                            <constraint firstAttribute="trailing" secondItem="c0w-0c-zrY" secondAttribute="trailing" constant="20" id="3wQ-WU-wju"/>
+                            <constraint firstItem="c0w-0c-zrY" firstAttribute="top" secondItem="I71-75-6X6" secondAttribute="bottom" constant="9" id="4iY-hI-32g"/>
+                            <constraint firstItem="c0w-0c-zrY" firstAttribute="height" secondItem="VG6-kZ-M1X" secondAttribute="height" id="8hf-xb-suy"/>
+                            <constraint firstItem="I71-75-6X6" firstAttribute="top" secondItem="VG6-kZ-M1X" secondAttribute="bottom" constant="8" id="TKR-Om-WLl"/>
+                            <constraint firstItem="c0w-0c-zrY" firstAttribute="width" secondItem="VG6-kZ-M1X" secondAttribute="width" id="UUK-HV-RzC"/>
+                            <constraint firstItem="I71-75-6X6" firstAttribute="height" secondItem="VG6-kZ-M1X" secondAttribute="height" id="XzW-gk-106"/>
+                            <constraint firstAttribute="bottom" secondItem="c0w-0c-zrY" secondAttribute="bottom" constant="20" id="cSJ-MI-N7b"/>
+                            <constraint firstItem="c0w-0c-zrY" firstAttribute="centerX" secondItem="VG6-kZ-M1X" secondAttribute="centerX" id="pbH-ed-6ea"/>
+                            <constraint firstItem="I71-75-6X6" firstAttribute="width" secondItem="VG6-kZ-M1X" secondAttribute="width" id="tHa-is-dEe"/>
+                            <constraint firstItem="VG6-kZ-M1X" firstAttribute="top" secondItem="NoZ-gz-vFQ" secondAttribute="top" constant="20" id="u8q-2t-OgM"/>
+                            <constraint firstItem="I71-75-6X6" firstAttribute="centerX" secondItem="VG6-kZ-M1X" secondAttribute="centerX" id="wm5-5O-cLi"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <customObject id="U52-0S-5Sz" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-292" y="1148.5"/>
         </scene>
         <!--Canvas View Controller-->
         <scene sceneID="YYg-DD-RcI">
@@ -963,7 +1026,7 @@
                                     <font key="font" metaFont="system" size="18"/>
                                 </buttonCell>
                                 <connections>
-                                    <action selector="addShape:" target="LyJ-wr-Dv2" id="tnh-l4-Yy4"/>
+                                    <segue destination="vpT-uY-fsB" kind="popover" identifier="showShapePicker" popoverAnchorView="XwP-1R-leY" popoverBehavior="t" preferredEdge="maxY" id="5mX-9t-jv3"/>
                                 </connections>
                             </button>
                         </subviews>

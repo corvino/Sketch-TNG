@@ -18,7 +18,11 @@
 		277CF7BB1AA4F00600A6EA7E /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 277CF7BA1AA4F00600A6EA7E /* QuartzCore.framework */; };
 		277CF7BF1AA8F26E00A6EA7E /* CanvasInspectorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 277CF7BE1AA8F26E00A6EA7E /* CanvasInspectorViewController.m */; };
 		277CF7C31AAA3B2300A6EA7E /* Graphic.m in Sources */ = {isa = PBXBuildFile; fileRef = 277CF7C21AAA3B2300A6EA7E /* Graphic.m */; };
-		277CF7C61AAA3B4700A6EA7E /* Circle.m in Sources */ = {isa = PBXBuildFile; fileRef = 277CF7C51AAA3B4700A6EA7E /* Circle.m */; };
+		277CF7C61AAA3B4700A6EA7E /* Ellipse.m in Sources */ = {isa = PBXBuildFile; fileRef = 277CF7C51AAA3B4700A6EA7E /* Ellipse.m */; };
+		277CF7CC1AAA468F00A6EA7E /* Shape.m in Sources */ = {isa = PBXBuildFile; fileRef = 277CF7CB1AAA468F00A6EA7E /* Shape.m */; };
+		277CF7CF1AAA491300A6EA7E /* ShapePickerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 277CF7CE1AAA491200A6EA7E /* ShapePickerController.m */; };
+		277CF7D21AAA4B7F00A6EA7E /* Rectangle.m in Sources */ = {isa = PBXBuildFile; fileRef = 277CF7D11AAA4B7F00A6EA7E /* Rectangle.m */; };
+		277CF7D51AAA4B8E00A6EA7E /* Triangle.m in Sources */ = {isa = PBXBuildFile; fileRef = 277CF7D41AAA4B8E00A6EA7E /* Triangle.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,8 +57,16 @@
 		277CF7BE1AA8F26E00A6EA7E /* CanvasInspectorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CanvasInspectorViewController.m; sourceTree = "<group>"; };
 		277CF7C11AAA3B2300A6EA7E /* Graphic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Graphic.h; sourceTree = "<group>"; };
 		277CF7C21AAA3B2300A6EA7E /* Graphic.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Graphic.m; sourceTree = "<group>"; };
-		277CF7C41AAA3B4700A6EA7E /* Circle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Circle.h; sourceTree = "<group>"; };
-		277CF7C51AAA3B4700A6EA7E /* Circle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Circle.m; sourceTree = "<group>"; };
+		277CF7C41AAA3B4700A6EA7E /* Ellipse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Ellipse.h; sourceTree = "<group>"; };
+		277CF7C51AAA3B4700A6EA7E /* Ellipse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Ellipse.m; sourceTree = "<group>"; };
+		277CF7CA1AAA468F00A6EA7E /* Shape.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Shape.h; sourceTree = "<group>"; };
+		277CF7CB1AAA468F00A6EA7E /* Shape.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Shape.m; sourceTree = "<group>"; };
+		277CF7CD1AAA491200A6EA7E /* ShapePickerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShapePickerController.h; sourceTree = "<group>"; };
+		277CF7CE1AAA491200A6EA7E /* ShapePickerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShapePickerController.m; sourceTree = "<group>"; };
+		277CF7D01AAA4B7F00A6EA7E /* Rectangle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Rectangle.h; sourceTree = "<group>"; };
+		277CF7D11AAA4B7F00A6EA7E /* Rectangle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Rectangle.m; sourceTree = "<group>"; };
+		277CF7D31AAA4B8E00A6EA7E /* Triangle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Triangle.h; sourceTree = "<group>"; };
+		277CF7D41AAA4B8E00A6EA7E /* Triangle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Triangle.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -146,6 +158,8 @@
 				277CF7B31AA4E8C400A6EA7E /* CanvasViewController.m */,
 				277CF7BD1AA8F26E00A6EA7E /* CanvasInspectorViewController.h */,
 				277CF7BE1AA8F26E00A6EA7E /* CanvasInspectorViewController.m */,
+				277CF7CD1AAA491200A6EA7E /* ShapePickerController.h */,
+				277CF7CE1AAA491200A6EA7E /* ShapePickerController.m */,
 			);
 			name = Canvas;
 			sourceTree = "<group>";
@@ -161,10 +175,16 @@
 		277CF7C01AAA3AF300A6EA7E /* Graphics */ = {
 			isa = PBXGroup;
 			children = (
+				277CF7C41AAA3B4700A6EA7E /* Ellipse.h */,
+				277CF7C51AAA3B4700A6EA7E /* Ellipse.m */,
 				277CF7C11AAA3B2300A6EA7E /* Graphic.h */,
 				277CF7C21AAA3B2300A6EA7E /* Graphic.m */,
-				277CF7C41AAA3B4700A6EA7E /* Circle.h */,
-				277CF7C51AAA3B4700A6EA7E /* Circle.m */,
+				277CF7D01AAA4B7F00A6EA7E /* Rectangle.h */,
+				277CF7D11AAA4B7F00A6EA7E /* Rectangle.m */,
+				277CF7CA1AAA468F00A6EA7E /* Shape.h */,
+				277CF7CB1AAA468F00A6EA7E /* Shape.m */,
+				277CF7D31AAA4B8E00A6EA7E /* Triangle.h */,
+				277CF7D41AAA4B8E00A6EA7E /* Triangle.m */,
 			);
 			name = Graphics;
 			sourceTree = "<group>";
@@ -269,13 +289,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				277CF7961AA4CF7C00A6EA7E /* Document.m in Sources */,
+				277CF7CF1AAA491300A6EA7E /* ShapePickerController.m in Sources */,
+				277CF7D21AAA4B7F00A6EA7E /* Rectangle.m in Sources */,
 				277CF7931AA4CF7C00A6EA7E /* ViewController.m in Sources */,
 				277CF7BF1AA8F26E00A6EA7E /* CanvasInspectorViewController.m in Sources */,
 				277CF7B41AA4E8C400A6EA7E /* CanvasViewController.m in Sources */,
 				277CF7901AA4CF7C00A6EA7E /* main.m in Sources */,
-				277CF7C61AAA3B4700A6EA7E /* Circle.m in Sources */,
+				277CF7C61AAA3B4700A6EA7E /* Ellipse.m in Sources */,
+				277CF7CC1AAA468F00A6EA7E /* Shape.m in Sources */,
 				277CF78E1AA4CF7C00A6EA7E /* AppDelegate.m in Sources */,
 				277CF7C31AAA3B2300A6EA7E /* Graphic.m in Sources */,
+				277CF7D51AAA4B8E00A6EA7E /* Triangle.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

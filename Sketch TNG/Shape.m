@@ -1,23 +1,21 @@
 //
-//  Circle.m
+//  Shape.m
 //  Sketch TNG
 //
 //  Created by Nathan Corvino on 3/6/15.
 //  Copyright (c) 2015 Nathan Corvino. All rights reserved.
 //
 
-#import "Circle.h"
+#import "Shape.h"
 
-@interface Circle() {
+@interface Shape() {
     CAShapeLayer *_layer;
 }
-
-@property (nonatomic, readonly) CAShapeLayer *shapeLayer;
 
 @end
 
 
-@implementation Circle
+@implementation Shape
 
 - (CALayer *)layer
 {
@@ -30,12 +28,6 @@
 - (CAShapeLayer *)shapeLayer
 {
     return (CAShapeLayer *)self.layer;
-}
-
-- (void)setFrame:(CGRect)frame
-{
-    super.frame = frame;
-    self.shapeLayer.path = CGPathCreateWithEllipseInRect(CGRectMake(0., 0., frame.size.width, frame.size.height), &CGAffineTransformIdentity);
 }
 
 - (void)setFillColor:(NSColor *)fillColor

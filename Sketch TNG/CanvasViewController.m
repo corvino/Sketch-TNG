@@ -9,14 +9,17 @@
 #import "CanvasViewController.h"
 
 #import "Graphic.h"
-#import "Circle.h"
+#import "Ellipse.h"
+
+#import "ShapePickerController.h"
 
 @import QuartzCore;
 
-@interface CanvasViewController () {
+@interface CanvasViewController  () <ShapeContainer> {
     NSMutableArray *shapes;
     Graphic *selectedShape;
     CGSize originalSize;
+     ShapePickerController *shapePickerController;
 }
 
 @end
@@ -36,18 +39,25 @@
     self.canvasView.layer.backgroundColor = [NSColor whiteColor].CGColor;
 }
 
-- (IBAction)addShape:(id)sender
+- (void)prepareForSegue:(NSStoryboardSegue *)segue sender:(id)sender
 {
-    Circle *shape = [[Circle alloc] init];
+    if ([@"showShapePicker" isEqualToString:segue.identifier]) {
+        shapePickerController = segue.destinationController;
+        shapePickerController.shapeContainer = self;
+    }
+}
+
+- (IBAction)addShape:(Graphic *)graphic
+{
     CGRect parentFrame = self.canvasView.frame;
 
-    shape.frame = CGRectMake((parentFrame.size.width - 25.) / 2., (parentFrame.size.height - 25.) / 2., 50., 50.);
-    shape.fillColor = [NSColor colorWithRed:137./255. green:180./255. blue:230./255. alpha:1.];
-    shape.strokeColor = [NSColor blackColor];
+    graphic.frame = CGRectMake((parentFrame.size.width - 25.) / 2., (parentFrame.size.height - 25.) / 2., 50., 50.);
+    graphic.fillColor = [NSColor colorWithRed:137./255. green:180./255. blue:230./255. alpha:1.];
+    graphic.strokeColor = [NSColor blackColor];
 
-    [shapes addObject:shape];
+    [shapes addObject:graphic];
 
-    [self.canvasView.layer addSublayer:shape.layer];
+    [self.canvasView.layer addSublayer:graphic.layer];
 }
 
 - (void)sendShapeSelectedNotification
