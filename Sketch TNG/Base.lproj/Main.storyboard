@@ -899,13 +899,20 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="fillCheckbox" destination="U1Q-fg-sW8" id="9cx-ig-BDV"/>
                         <outlet property="fillColorWell" destination="0PE-rK-zVn" id="LfW-n7-2IB"/>
+                        <outlet property="heightStepper" destination="kUy-U9-QSg" id="kxR-EQ-Kgy"/>
                         <outlet property="heightTextField" destination="awj-HH-gFY" id="RCG-JN-Vfa"/>
                         <outlet property="lineWidthSlider" destination="mGI-KA-Uqf" id="HxM-6L-DbM"/>
+                        <outlet property="lineWidthStepper" destination="iV7-Nm-mdo" id="6ua-3R-xaf"/>
                         <outlet property="lineWidthTextField" destination="E94-IS-5hW" id="S99-vC-KIP"/>
+                        <outlet property="strokeCheckbox" destination="hhA-yQ-fin" id="tP2-D8-rxd"/>
                         <outlet property="strokeColorWell" destination="vFH-X9-cqs" id="Ino-Te-AlC"/>
+                        <outlet property="widthStepper" destination="Wv9-Kh-Gjm" id="viX-3h-1YZ"/>
                         <outlet property="widthTextField" destination="JmI-ww-CNI" id="7RO-zZ-IGd"/>
+                        <outlet property="xStepper" destination="Tbp-Bd-CUh" id="xUs-lc-JWO"/>
                         <outlet property="xTextField" destination="fnM-kt-9J9" id="UOW-bq-0Ew"/>
+                        <outlet property="yStepper" destination="HBm-n9-Shz" id="J04-i8-BLf"/>
                         <outlet property="yTextField" destination="a2P-iN-znG" id="1Na-pv-H90"/>
                     </connections>
                 </viewController>
@@ -938,6 +945,11 @@
                                             <action selector="magnifyWithGestureRecognizer:" target="LyJ-wr-Dv2" id="Tso-F4-efl"/>
                                         </connections>
                                     </magnificationGestureRecognizer>
+                                    <clickGestureRecognizer delaysPrimaryMouseButtonEvents="YES" numberOfClicksRequired="1" id="57q-5x-sNc">
+                                        <connections>
+                                            <action selector="clickWithGestureRecognizer:" target="LyJ-wr-Dv2" id="Evk-9D-n5U"/>
+                                        </connections>
+                                    </clickGestureRecognizer>
                                 </gestureRecognizers>
                             </customView>
                             <button translatesAutoresizingMaskIntoConstraints="NO" id="XwP-1R-leY">

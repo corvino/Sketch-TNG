@@ -48,7 +48,10 @@
 {
     [super viewDidLoad];
 
+    [self disableShapeAttributes];
+
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(shapeSelected:) name:SHAPE_BECAME_SELECTED object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(shapeDeselected:) name:SHAPE_BECAME_DESELECTED object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(shapeChanged:) name:SHAPE_ATTRIBUTES_CHANGED object:nil];
 }
 
@@ -74,12 +77,72 @@
     }
 }
 
+- (void)enableShapeAttributes
+{
+    self.fillCheckbox.enabled = YES;
+    self.fillColorWell.enabled = YES;
+    self.strokeCheckbox.enabled = YES;
+    self.strokeColorWell.enabled = YES;
+    self.lineWidthTextField.enabled = YES;
+    self.lineWidthSlider.enabled = YES;
+    self.lineWidthStepper.enabled = YES;
+    self.xTextField.enabled = YES;
+    self.yTextField.enabled = YES;
+    self.widthTextField.enabled = YES;
+    self.heightTextField.enabled = YES;
+    self.xStepper.enabled = YES;
+    self.yStepper.enabled = YES;
+    self.widthStepper.enabled = YES;
+    self.heightStepper.enabled = YES;
+}
+
+- (void)disableShapeAttributes
+{
+    self.fillCheckbox.enabled = NO;
+    self.fillColorWell.enabled = NO;
+    self.strokeCheckbox.enabled = NO;
+    self.strokeColorWell.enabled = NO;
+    self.lineWidthTextField.enabled = NO;
+    self.lineWidthSlider.enabled = NO;
+    self.lineWidthStepper.enabled = NO;
+    self.xTextField.enabled = NO;
+    self.yTextField.enabled = NO;
+    self.widthTextField.enabled = NO;
+    self.heightTextField.enabled = NO;
+    self.xStepper.enabled = NO;
+    self.yStepper.enabled = NO;
+    self.widthStepper.enabled = NO;
+    self.heightStepper.enabled = NO;
+
+    self.fillCheckbox.state = NSOffState;
+    self.fillColorWell.color = [NSColor blackColor];
+    self.strokeCheckbox.state = NSOffState;
+    self.strokeColorWell.color = [NSColor blackColor];
+    self.lineWidthTextField.stringValue = @"";
+    self.lineWidthSlider.doubleValue = 0.;
+    self.xTextField.stringValue = @"";
+    self.yTextField.stringValue = @"";
+    self.widthTextField.stringValue = @"";
+    self.heightTextField.stringValue = @"";
+}
+
 #pragma mark - Attribute Adjustment Actions
 
 - (void)shapeSelected:(NSNotification *)notification
 {
+    if (!selectedShape) {
+        [self enableShapeAttributes];
+    }
     selectedShape = notification.userInfo[SELECTED_SHAPE];
     [self readShapeAttributes];
+}
+
+- (void)shapeDeselected:(NSNotification *)notification
+{
+    if (selectedShape) {
+        [self disableShapeAttributes];
+        selectedShape = nil;
+    }
 }
 
 - (void)shapeChanged:(NSNotification *)notification

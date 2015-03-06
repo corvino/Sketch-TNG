@@ -9,6 +9,7 @@
 #import <Cocoa/Cocoa.h>
 
 #define SHAPE_BECAME_SELECTED @"SHAPE_BECAME_SELECTED"
+#define SHAPE_BECAME_DESELECTED @"SHAPE_BECAME_DESELECTED"
 #define SHAPE_ATTRIBUTES_CHANGED @"SHAPE_ATTRIBUTES_CHANGED"
 
 #define SELECTED_SHAPE @"SELECTED_SHAPE"
@@ -20,5 +21,6 @@
 - (IBAction)addShape:(id)sender;
 - (IBAction)dragWithGestureRecognizer:(NSPanGestureRecognizer *)panner;
 - (IBAction)magnifyWithGestureRecognizer:(NSMagnificationGestureRecognizer *)magnifier;
+- (IBAction)clickWithGestureRecognizer:(NSClickGestureRecognizer *)clicker;
 
 @end

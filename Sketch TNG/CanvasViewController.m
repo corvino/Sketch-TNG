@@ -48,14 +48,23 @@
     [self.canvasView.layer addSublayer:shape];
 }
 
+- (void)sendShapeSelectedNotification
+{
+    if (selectedShape) {
+        [[NSNotificationCenter defaultCenter] postNotificationName:SHAPE_BECAME_SELECTED object:nil userInfo:@{ SELECTED_SHAPE : selectedShape }];
+    } else {
+        [[NSNotificationCenter defaultCenter] postNotificationName:SHAPE_BECAME_DESELECTED object:nil];
+    }
+}
+
 - (IBAction)dragWithGestureRecognizer:(NSPanGestureRecognizer *)panner
 {
     if (panner.state == NSGestureRecognizerStateBegan) {
         selectedShape = [self selectShapeAtLocation:[panner locationInView:self.canvasView]];
         if (selectedShape) {
-            [[NSNotificationCenter defaultCenter] postNotificationName:SHAPE_BECAME_SELECTED object:nil userInfo:@{ SELECTED_SHAPE : selectedShape }];
             [panner setTranslation:selectedShape.frame.origin inView:self.canvasView];
         }
+        [self sendShapeSelectedNotification];
     } else if (selectedShape) {
         switch (panner.state) {
             case NSGestureRecognizerStateChanged: {
@@ -80,9 +89,7 @@
     if (magnifier.state == NSGestureRecognizerStateBegan) {
         selectedShape = [self selectShapeAtLocation:[magnifier locationInView:self.canvasView]];
         originalSize = selectedShape.frame.size;
-        if (selectedShape) {
-            [[NSNotificationCenter defaultCenter] postNotificationName:SHAPE_BECAME_SELECTED object:nil userInfo:@{ SELECTED_SHAPE : selectedShape }];
-        }
+        [self sendShapeSelectedNotification];
     } else if (selectedShape) {
         switch (magnifier.state) {
             case NSGestureRecognizerStateChanged: {
@@ -103,6 +110,12 @@
                 break;
         }
     }
+}
+
+- (IBAction)clickWithGestureRecognizer:(NSClickGestureRecognizer *)clicker
+{
+    selectedShape = [self selectShapeAtLocation:[clicker locationInView:self.canvasView]];
+    [self sendShapeSelectedNotification];
 }
 
 - (CAShapeLayer *)selectShapeAtLocation:(CGPoint)point
