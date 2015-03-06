@@ -17,6 +17,8 @@
 		277CF7B41AA4E8C400A6EA7E /* CanvasViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 277CF7B31AA4E8C400A6EA7E /* CanvasViewController.m */; };
 		277CF7BB1AA4F00600A6EA7E /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 277CF7BA1AA4F00600A6EA7E /* QuartzCore.framework */; };
 		277CF7BF1AA8F26E00A6EA7E /* CanvasInspectorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 277CF7BE1AA8F26E00A6EA7E /* CanvasInspectorViewController.m */; };
+		277CF7C31AAA3B2300A6EA7E /* Graphic.m in Sources */ = {isa = PBXBuildFile; fileRef = 277CF7C21AAA3B2300A6EA7E /* Graphic.m */; };
+		277CF7C61AAA3B4700A6EA7E /* Circle.m in Sources */ = {isa = PBXBuildFile; fileRef = 277CF7C51AAA3B4700A6EA7E /* Circle.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +51,10 @@
 		277CF7BA1AA4F00600A6EA7E /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		277CF7BD1AA8F26E00A6EA7E /* CanvasInspectorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CanvasInspectorViewController.h; sourceTree = "<group>"; };
 		277CF7BE1AA8F26E00A6EA7E /* CanvasInspectorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CanvasInspectorViewController.m; sourceTree = "<group>"; };
+		277CF7C11AAA3B2300A6EA7E /* Graphic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Graphic.h; sourceTree = "<group>"; };
+		277CF7C21AAA3B2300A6EA7E /* Graphic.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Graphic.m; sourceTree = "<group>"; };
+		277CF7C41AAA3B4700A6EA7E /* Circle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Circle.h; sourceTree = "<group>"; };
+		277CF7C51AAA3B4700A6EA7E /* Circle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Circle.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,6 +107,7 @@
 				277CF7971AA4CF7C00A6EA7E /* Images.xcassets */,
 				277CF7991AA4CF7C00A6EA7E /* Main.storyboard */,
 				277CF7B11AA4E89600A6EA7E /* Canvas */,
+				277CF7C01AAA3AF300A6EA7E /* Graphics */,
 				277CF78A1AA4CF7C00A6EA7E /* Supporting Files */,
 			);
 			path = "Sketch TNG";
@@ -149,6 +156,17 @@
 				277CF7BA1AA4F00600A6EA7E /* QuartzCore.framework */,
 			);
 			name = ExternalFrameworks;
+			sourceTree = "<group>";
+		};
+		277CF7C01AAA3AF300A6EA7E /* Graphics */ = {
+			isa = PBXGroup;
+			children = (
+				277CF7C11AAA3B2300A6EA7E /* Graphic.h */,
+				277CF7C21AAA3B2300A6EA7E /* Graphic.m */,
+				277CF7C41AAA3B4700A6EA7E /* Circle.h */,
+				277CF7C51AAA3B4700A6EA7E /* Circle.m */,
+			);
+			name = Graphics;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -255,7 +273,9 @@
 				277CF7BF1AA8F26E00A6EA7E /* CanvasInspectorViewController.m in Sources */,
 				277CF7B41AA4E8C400A6EA7E /* CanvasViewController.m in Sources */,
 				277CF7901AA4CF7C00A6EA7E /* main.m in Sources */,
+				277CF7C61AAA3B4700A6EA7E /* Circle.m in Sources */,
 				277CF78E1AA4CF7C00A6EA7E /* AppDelegate.m in Sources */,
+				277CF7C31AAA3B2300A6EA7E /* Graphic.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

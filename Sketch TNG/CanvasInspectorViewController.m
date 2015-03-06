@@ -11,6 +11,7 @@
 @import QuartzCore;
 
 #import "CanvasViewController.h"
+#import "Graphic.h"
 
 @interface NumericOnlyFormatter : NSNumberFormatter
 @end
@@ -37,7 +38,7 @@
 @end
 
 @interface CanvasInspectorViewController () {
-    CAShapeLayer *selectedShape;
+    Graphic *selectedShape;
 }
 
 @end
@@ -63,12 +64,12 @@
 - (void)readShapeAttributes
 {
     if (selectedShape) {
-        self.fillColorWell.color = [NSColor colorWithCGColor:selectedShape.fillColor];
-        self.strokeColorWell.color = [NSColor colorWithCGColor:selectedShape.strokeColor];
+        self.fillColorWell.color = selectedShape.fillColor;
+        self.strokeColorWell.color = selectedShape.strokeColor;
 
-        double lineWidth = fmax(fmin(selectedShape.lineWidth, 100.), 0.);
+        double lineWidth = fmax(fmin(selectedShape.strokeWidth, 100.), 0.);
         self.lineWidthSlider.doubleValue = lineWidth;
-        self.lineWidthTextField.stringValue = [NSString stringWithFormat:@"%0.1f", selectedShape.lineWidth];
+        self.lineWidthTextField.stringValue = [NSString stringWithFormat:@"%0.1f", selectedShape.strokeWidth];
 
         self.xTextField.stringValue = [NSString stringWithFormat:@"%0.1f", selectedShape.frame.origin.x];
         self.yTextField.stringValue = [NSString stringWithFormat:@"%0.1f", selectedShape.frame.origin.y];
@@ -152,24 +153,24 @@
 
 - (IBAction)lineWidthSliderChanged:(id)sender
 {
-    selectedShape.lineWidth = self.lineWidthSlider.doubleValue;
-    self.lineWidthTextField.stringValue = [NSString stringWithFormat:@"%0.1f", selectedShape.lineWidth];
+    selectedShape.strokeWidth = self.lineWidthSlider.doubleValue;
+    self.lineWidthTextField.stringValue = [NSString stringWithFormat:@"%0.1f", selectedShape.strokeWidth];
 }
 
 - (IBAction)lineWidthTextReceived:(id)sender
 {
-    selectedShape.lineWidth = self.lineWidthTextField.floatValue;
-    self.lineWidthSlider.doubleValue = selectedShape.lineWidth;
+    selectedShape.strokeWidth = self.lineWidthTextField.floatValue;
+    self.lineWidthSlider.doubleValue = selectedShape.strokeWidth;
 }
 
 - (IBAction)strokeColorChanged:(NSColorWell *)sender
 {
-    selectedShape.strokeColor = sender.color.CGColor;
+    selectedShape.strokeColor = sender.color;
 }
 
 - (IBAction)fillColorChanged:(NSColorWell *)sender
 {
-    selectedShape.fillColor = sender.color.CGColor;
+    selectedShape.fillColor = sender.color;
 }
 
 - (IBAction)textInputReceived:(id)sender

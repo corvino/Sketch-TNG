@@ -8,11 +8,14 @@
 
 #import "CanvasViewController.h"
 
+#import "Graphic.h"
+#import "Circle.h"
+
 @import QuartzCore;
 
 @interface CanvasViewController () {
     NSMutableArray *shapes;
-    CAShapeLayer *selectedShape;
+    Graphic *selectedShape;
     CGSize originalSize;
 }
 
@@ -35,17 +38,16 @@
 
 - (IBAction)addShape:(id)sender
 {
-    CAShapeLayer *shape = [CAShapeLayer layer];
+    Circle *shape = [[Circle alloc] init];
     CGRect parentFrame = self.canvasView.frame;
 
     shape.frame = CGRectMake((parentFrame.size.width - 25.) / 2., (parentFrame.size.height - 25.) / 2., 50., 50.);
-    shape.path = CGPathCreateWithEllipseInRect(CGRectMake(0., 0., 50., 50.), &CGAffineTransformIdentity);
-    shape.fillColor = [NSColor colorWithRed:137./255. green:180./255. blue:230./255. alpha:1.].CGColor;
-    shape.strokeColor = [NSColor blackColor].CGColor;
+    shape.fillColor = [NSColor colorWithRed:137./255. green:180./255. blue:230./255. alpha:1.];
+    shape.strokeColor = [NSColor blackColor];
 
     [shapes addObject:shape];
 
-    [self.canvasView.layer addSublayer:shape];
+    [self.canvasView.layer addSublayer:shape.layer];
 }
 
 - (void)sendShapeSelectedNotification
@@ -70,10 +72,12 @@
             case NSGestureRecognizerStateChanged: {
                 CGRect frame = selectedShape.frame;
                 frame.origin = [panner translationInView:self.canvasView];
+
                 [CATransaction begin];
                 [CATransaction setDisableActions:YES];
                 selectedShape.frame = frame;
                 [CATransaction commit];
+
                 [[NSNotificationCenter defaultCenter] postNotificationName:SHAPE_ATTRIBUTES_CHANGED object:nil];
                 break;
             }
@@ -97,12 +101,12 @@
                 CGRect frame = selectedShape.frame;
                 frame.size.width = originalSize.width + originalSize.width * magnifier.magnification;
                 frame.size.height = originalSize.height + originalSize.height * magnifier.magnification;
+
                 [CATransaction begin];
                 [CATransaction setDisableActions:YES];
-                // FIXME: This needs to go in a "model" object.
-                selectedShape.path = CGPathCreateWithEllipseInRect(CGRectMake(0., 0., frame.size.width, frame.size.height), &CGAffineTransformIdentity);
                 selectedShape.frame = frame;
                 [CATransaction commit];
+
                 [[NSNotificationCenter defaultCenter] postNotificationName:SHAPE_ATTRIBUTES_CHANGED object:nil];
             }
 
@@ -118,13 +122,13 @@
     [self sendShapeSelectedNotification];
 }
 
-- (CAShapeLayer *)selectShapeAtLocation:(CGPoint)point
+- (Graphic *)selectShapeAtLocation:(CGPoint)point
 {
-    CAShapeLayer *retval = nil;
-    for (CAShapeLayer *shape in shapes) {
+    Graphic *retval = nil;
+    for (Graphic *shape in shapes) {
         if (NSPointInRect(point, shape.frame)) {
             CGPoint translatedPoint = CGPointMake(point.x - shape.frame.origin.x, point.y - shape.frame.origin.y);
-            if (CGPathContainsPoint(shape.path, &CGAffineTransformIdentity, translatedPoint, false)) {
+            if ([shape containsPointInBounds:translatedPoint]) {
                 retval = shape;
                 break;
             }
