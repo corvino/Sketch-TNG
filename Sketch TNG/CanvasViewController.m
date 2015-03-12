@@ -18,8 +18,7 @@
 @interface CanvasViewController  () <ShapeContainer> {
     NSMutableArray *shapes;
     Graphic *selectedShape;
-    CGSize originalSize;
-     ShapePickerController *shapePickerController;
+    CGRect originalFrame;
 }
 
 @end
@@ -42,7 +41,7 @@
 - (void)prepareForSegue:(NSStoryboardSegue *)segue sender:(id)sender
 {
     if ([@"showShapePicker" isEqualToString:segue.identifier]) {
-        shapePickerController = segue.destinationController;
+        ShapePickerController *shapePickerController = segue.destinationController;
         shapePickerController.shapeContainer = self;
     }
 }
@@ -102,22 +101,34 @@
 {
     if (magnifier.state == NSGestureRecognizerStateBegan) {
         selectedShape = [self selectShapeAtLocation:[magnifier locationInView:self.canvasView]];
-        originalSize = selectedShape.frame.size;
+        originalFrame = selectedShape.frame;
         [self sendShapeSelectedNotification];
     } else if (selectedShape) {
         switch (magnifier.state) {
             case NSGestureRecognizerStateChanged: {
-                NSLog(@"Magnification: %f", magnifier.magnification);
-                CGRect frame = selectedShape.frame;
-                frame.size.width = originalSize.width + originalSize.width * magnifier.magnification;
-                frame.size.height = originalSize.height + originalSize.height * magnifier.magnification;
+                CGFloat magnification = magnifier.magnification;
+                CGRect frame = originalFrame;
 
-                [CATransaction begin];
-                [CATransaction setDisableActions:YES];
-                selectedShape.frame = frame;
-                [CATransaction commit];
+                // Don't allow a zero-size.
+                if (magnification != 1.) {
+                    frame.size.width = originalFrame.size.width + originalFrame.size.width * magnifier.magnification;
+                    frame.size.height = originalFrame.size.height + originalFrame.size.height * magnifier.magnification;
 
-                [[NSNotificationCenter defaultCenter] postNotificationName:SHAPE_ATTRIBUTES_CHANGED object:nil];
+                    // Translate negative size; otherwise shape becomes unselectable.
+                    if (magnification <= -1.) {
+                        frame.size.width *= -1.;
+                        frame.size.height *= -1.;
+                        frame.origin.x -= frame.size.width;
+                        frame.origin.y -= frame.size.height;
+                    }
+
+                    [CATransaction begin];
+                    [CATransaction setDisableActions:YES];
+                    selectedShape.frame = frame;
+                    [CATransaction commit];
+
+                    [[NSNotificationCenter defaultCenter] postNotificationName:SHAPE_ATTRIBUTES_CHANGED object:nil];
+                }
             }
 
             default:
