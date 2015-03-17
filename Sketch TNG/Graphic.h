@@ -11,6 +11,8 @@
 @interface Graphic : NSObject
 
 @property (nonatomic) CGRect frame;
+@property (nonatomic) BOOL shouldFill;
+@property (nonatomic) BOOL shouldStroke;
 @property (nonatomic, retain) NSColor *fillColor;
 @property (nonatomic, retain) NSColor *strokeColor;
 @property (nonatomic) CGFloat strokeWidth;

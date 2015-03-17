@@ -64,6 +64,9 @@
 - (void)readShapeAttributes
 {
     if (selectedShape) {
+        self.fillCheckbox.state = selectedShape.shouldFill ? NSOnState : NSOffState;
+        self.strokeCheckbox.state = selectedShape.shouldStroke ? NSOnState : NSOffState;
+
         self.fillColorWell.color = selectedShape.fillColor;
         self.strokeColorWell.color = selectedShape.strokeColor;
 
@@ -146,9 +149,30 @@
     }
 }
 
+- (IBAction)fillCheckboxChanged:(id)sender
+{
+    selectedShape.shouldFill = (NSOnState == self.fillCheckbox.state);
+}
+
+- (IBAction)strokeCheckboxChanged:(id)sender
+{
+    selectedShape.shouldStroke = (NSOnState == self.strokeCheckbox.state);
+}
+
+
 - (void)shapeChanged:(NSNotification *)notification
 {
     [self readShapeAttributes];
+}
+
+- (IBAction)strokeColorChanged:(NSColorWell *)sender
+{
+    selectedShape.strokeColor = sender.color;
+}
+
+- (IBAction)fillColorChanged:(NSColorWell *)sender
+{
+    selectedShape.fillColor = sender.color;
 }
 
 - (IBAction)lineWidthSliderChanged:(id)sender
@@ -161,16 +185,6 @@
 {
     selectedShape.strokeWidth = self.lineWidthTextField.floatValue;
     self.lineWidthSlider.doubleValue = selectedShape.strokeWidth;
-}
-
-- (IBAction)strokeColorChanged:(NSColorWell *)sender
-{
-    selectedShape.strokeColor = sender.color;
-}
-
-- (IBAction)fillColorChanged:(NSColorWell *)sender
-{
-    selectedShape.fillColor = sender.color;
 }
 
 - (IBAction)textInputReceived:(id)sender

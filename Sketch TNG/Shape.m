@@ -30,10 +30,34 @@
     return (CAShapeLayer *)self.layer;
 }
 
+- (void)setShouldFill:(BOOL)shouldFill
+{
+    super.shouldFill = shouldFill;
+    if (shouldFill) {
+        self.shapeLayer.fillColor = self.fillColor.CGColor;
+    } else {
+        self.shapeLayer.fillColor = [NSColor clearColor].CGColor;
+    }
+}
+
+- (void)setShouldStroke:(BOOL)shouldStroke
+{
+    super.shouldStroke = shouldStroke;
+    if (shouldStroke) {
+        self.shapeLayer.strokeColor = self.strokeColor.CGColor;
+        self.shapeLayer.lineWidth = self.strokeWidth;
+    } else {
+        self.shapeLayer.strokeColor = [NSColor clearColor].CGColor;
+        self.shapeLayer.lineWidth = 0.;
+    }
+}
+
 - (void)setFillColor:(NSColor *)fillColor
 {
     super.fillColor = fillColor;
-    self.shapeLayer.fillColor = fillColor.CGColor;
+    if (self.shouldFill) {
+        self.shapeLayer.fillColor = fillColor.CGColor;
+    }
 }
 
 - (void)setStrokeColor:(NSColor *)strokeColor

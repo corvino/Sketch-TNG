@@ -10,6 +10,17 @@
 
 @implementation Graphic
 
+- (instancetype)init
+{
+    self = [super init];
+    if (self) {
+        _shouldFill = YES;
+        _shouldStroke = YES;
+        _strokeWidth = 1.;
+    }
+    return self;
+}
+
 - (void)setFrame:(CGRect)frame
 {
     _frame = frame;
