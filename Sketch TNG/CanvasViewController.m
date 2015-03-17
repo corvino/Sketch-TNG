@@ -139,8 +139,18 @@
 
 - (IBAction)clickWithGestureRecognizer:(NSClickGestureRecognizer *)clicker
 {
-    selectedShape = [self selectShapeAtLocation:[clicker locationInView:self.canvasView]];
-    [self sendShapeSelectedNotification];
+    if (NSGestureRecognizerStateEnded == clicker.state) {
+        Graphic *clickedShape = [self selectShapeAtLocation:[clicker locationInView:self.canvasView]];
+
+        if (selectedShape && clickedShape == selectedShape) {
+            CALayer *layer = selectedShape.layer;
+            // Re-add layer to move to "top".
+            [self.canvasView.layer addSublayer:layer];
+        } else {
+            selectedShape = [self selectShapeAtLocation:[clicker locationInView:self.canvasView]];
+            [self sendShapeSelectedNotification];
+        }
+    }
 }
 
 - (Graphic *)selectShapeAtLocation:(CGPoint)point
